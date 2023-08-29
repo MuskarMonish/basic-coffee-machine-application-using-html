@@ -1,0 +1,255 @@
+<style>
+
+    * {
+      margin: 0px;
+      padding: 0px;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: Georgia, "Times New Roman", Times, serif;
+      color: white;
+      background-color: black;
+    }
+    
+    .container {
+      max-width: 50rem;
+      margin: 2rem auto;
+      padding: 0px 2rem;
+      border: 10px solid;
+    }
+    
+    .main-heading {
+      font-size: 4rem;
+      margin: 2rem 0rem 1rem;
+      color: white;
+      text-align: center;
+    }
+    
+    /* form section */
+    .form-class {
+      margin: 2rem 0px;
+    }
+    
+    .form-control {
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .heading-field {
+      margin: 1rem 0px 0.6rem;
+    }
+    
+    .field-head {
+      font-size: 2rem;
+    }
+    
+    .input-div {
+      margin-bottom: 1rem;
+    }
+    
+    .field-inputs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+    }
+    
+    .form-control-input {
+      font-size: 1.5rem;
+      padding: 0.4rem 0px;
+      text-indent: 0.5rem;
+      border: none;
+      outline: 1px solid #999;
+      border-radius: 7px;
+      width: 100%;
+      color: #999;
+    }
+    option {
+      color: #999;
+    }
+    .radio {
+      outline: none;
+    }
+    
+    .form-control-input:focus {
+      color: #212529;
+      background-color: #fff;
+      border-color: #86b7fe;
+      outline: 0;
+      box-shadow: 0 0 0 0.25rem rgb(13 110 253 / 25%);
+    }
+    
+    .help-text {
+      font-size: 0.7rem;
+      margin-top: 0.4rem;
+      padding: 0.1rem;
+    }
+    
+    button {
+      font-size: 2rem;
+      margin: 0px auto;
+      display: block;
+      color: wite;
+      padding: 0.5rem 0.8rem;
+      border: 5px solid rgb(255, 255, 255);
+      background-color: #000000;
+      color: white;
+      border-radius: 10px;
+      box-shadow: 1px #0000;
+      box-shadow: rgb(100 100 111 / 20%) 0px 7px 29px 0px;
+    }
+    .button1 {
+      font-size: 2rem;
+      margin: 0px auto;
+      display: block;
+      color: wite;
+      padding: 0.5rem 0.8rem;
+      background-color: #000000;
+      color: white;
+      border-radius: 10px;
+      box-shadow: 1px #0000;
+      box-shadow: rgb(100 100 111 / 20%) 0px 7px 29px 0px;
+    }
+    .p{
+        text-align: center;
+        margin: 2rem 0rem 1rem;
+    }
+    .i{
+        margin: 2rem 4rem 1rem;
+    }
+    .inner
+{
+    display: inline-block;
+    margin: 2rem 3.8rem 1rem;
+}
+.inner1
+{
+    display: inline-block;
+    font-size: 4rem;
+}
+
+.inner2
+{
+    display: inline-block;
+    margin: 2rem 2rem 1rem;
+}
+    </style>
+
+<div class="container">
+    <div class="body">
+        <h1 class="main-heading">Coffee Machine</h1>
+        <h1 class="p">Please insert money</h1>
+        <h2 class="p">Amount to be paid:</h2>
+        <h2 class="p">100</h2>
+        <div class="inner"><button class="button">₹500</button></div>
+        <div class="inner"><button class="button">₹100</button></div>
+        <div class="inner"><button class="button">₹50</button></div>
+        <div class="inner2">
+            <div id="increment-count" class="inner1">
+                <input type="image" id="up-arrow" src="down_arrow.png" />
+              </div>
+              <div id="total-count" class="inner1">
+              </div>
+              <div id="decrement-count" class="inner1">
+                <input type="image" id="down-arrow" src="up_arrow.png" />
+              </div>
+        </div>
+        <div class="inner2">
+            <div id="increment-count1" class="inner1">
+                <input type="image" id="up-arrow" src="down_arrow.png" />
+              </div>
+              <div id="total-count1" class="inner1">
+              </div>
+              <div id="decrement-count1" class="inner1">
+                <input type="image" id="down-arrow" src="up_arrow.png" />
+              </div>
+        </div>
+        <div class="inner2">
+            <div id="increment-count2" class="inner1">
+                <input type="image" id="up-arrow" src="down_arrow.png" />
+              </div>
+              <div id="total-count2" class="inner1">
+              </div>
+              <div id="decrement-count2" class="inner1">
+                <input type="image" id="down-arrow" src="up_arrow.png" />
+              </div>
+        </div>
+        <div class="button1"><button class="button" onclick = "submitValue()">PAY</button></div>
+
+          
+    </div>
+</div>
+
+<script>
+const incrementCount = document.getElementById("increment-count");
+const decrementCount = document.getElementById("decrement-count");
+const incrementCount1 = document.getElementById("increment-count1");
+const decrementCount1 = document.getElementById("decrement-count1");
+const incrementCount2 = document.getElementById("increment-count2");
+const decrementCount2 = document.getElementById("decrement-count2");
+
+const totalCount = document.getElementById("total-count");
+const totalCount1 = document.getElementById("total-count1");
+const totalCount2 = document.getElementById("total-count2");
+
+var count = 0;
+var count1 = 0;
+var count2 = 0;
+
+totalCount.innerHTML = count;
+totalCount1.innerHTML = count1;
+totalCount2.innerHTML = count2;
+
+const handleIncrement = () => {
+  count++;
+  totalCount.innerHTML = count;
+};
+
+const handleDecrement = () => {
+  if(count>0)
+  count--;
+  totalCount.innerHTML = count;
+};
+
+const handleIncrement1 = () => {
+  count1++;
+  totalCount1.innerHTML = count1;
+};
+
+const handleDecrement1 = () => {
+  if(count1>0)
+  count1--;
+  totalCount1.innerHTML = count1;
+};
+
+const handleIncrement2 = () => {
+  count2++;
+  totalCount2.innerHTML = count2;
+};
+
+const handleDecrement2 = () => {
+  if(count2>0)
+  count2--;
+  totalCount2.innerHTML = count2;
+};
+
+incrementCount.addEventListener("click", handleDecrement);
+decrementCount.addEventListener("click", handleIncrement);
+incrementCount1.addEventListener("click", handleDecrement1);
+decrementCount1.addEventListener("click", handleIncrement1);
+incrementCount2.addEventListener("click", handleDecrement2);
+decrementCount2.addEventListener("click", handleIncrement2);
+
+
+function submitValue() {
+        value=count*500+count1*100+count2*50-100;
+        if(value<0){
+            alert("Please insert more money");
+        }
+        else{
+        localStorage.setItem('myValue', (value));
+        
+        window.location.href = 'payment.html';
+    }
+      }
+</script>
