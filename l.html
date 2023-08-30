@@ -109,6 +109,7 @@
       border-radius: 10px;
       box-shadow: 1px #0000;
       box-shadow: rgb(100 100 111 / 20%) 0px 7px 29px 0px;
+      margin: 0rem 2rem 0rem;
     }
     .p{
         text-align: center;
@@ -132,6 +133,77 @@
 {
     display: inline-block;
     margin: 2rem 2rem 1rem;
+}
+
+.popup {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* The actual popup */
+.popup .popuptext {
+  visibility: hidden;
+  width: 160px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 8px 0;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -80px;
+}
+
+/* Popup arrow */
+.popup .popuptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+
+/* Toggle this class - hide and show the popup */
+.popup .show {
+  visibility: visible;
+  -webkit-animation: fadeIn 1s;
+  animation: fadeIn 1s;
+}
+
+/* Add animation (fade in the popup) */
+@-webkit-keyframes fadeIn {
+  from {opacity: 0;} 
+  to {opacity: 1;}
+}
+
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity:1 ;}
+}
+
+#myProgress {
+  width: 100%;
+  background-color: #ddd;
+  margin-top: 10px;
+}
+
+#myBar {
+  width: 0%;
+  height: 30px;
+  background-color: #04AA6D;
+  text-align: center;
+  line-height: 30px;
+  color: #ddd;
 }
     </style>
 
@@ -174,7 +246,12 @@
                 <input type="image" id="down-arrow" src="up_arrow.png" />
               </div>
         </div>
-        <div class="button1"><button class="button" onclick = "submitValue()">PAY</button></div>
+        <div class="button1"><button class="button" onclick = "submitValue()">PAY</button>
+            <div id="myProgress">
+              <div id="myBar">0%</div>
+            </div>
+        </div>
+
 
           
     </div>
@@ -241,15 +318,41 @@ incrementCount2.addEventListener("click", handleDecrement2);
 decrementCount2.addEventListener("click", handleIncrement2);
 
 
+
+
 function submitValue() {
         value=count*500+count1*100+count2*50-1000;
         if(value<0){
             alert("Please insert more money");
         }
         else{
-        localStorage.setItem('myValue', (value));
-        
-        window.location.href = 'payment.html';
-    }
+        move();
+        }
+    
       }
+      var i = 0;
+function move() {
+  if (i == 0) {
+    i = 1;
+    var elem = document.getElementById("myBar");
+    var width = 10;
+    var id = setInterval(frame, 10);
+    function frame() {
+      if (width >= 100) {
+        clearInterval(id);
+        i = 0;
+      } else {
+        width++;
+        elem.style.width = width + "%";
+        elem.innerHTML = width  + "%";
+      }
+    }
+  }
+  setTimeout(change, 1000);
+}
+function change(){
+  value=count*500+count1*100+count2*50-1000;
+    localStorage.setItem('myValue', (value));
+    window.location.href = 'payment.html';
+}
 </script>
